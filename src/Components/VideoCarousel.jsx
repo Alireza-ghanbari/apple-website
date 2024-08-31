@@ -24,14 +24,12 @@ const VideoCarousel = () => {
   const { isEnd, isLastVideo, startPlay, videoId, isPlaying } = video;
 
   useGSAP(() => {
-
     gsap.to("#slider", {
       transform: `translateX(${-100 * videoId}%)`,
       duration: 2,
-      ease: "power2.inOut", 
+      ease: "power2.inOut",
     });
 
-    
     gsap.to("#video", {
       scrollTrigger: {
         trigger: "#video",
@@ -54,30 +52,26 @@ const VideoCarousel = () => {
     if (span[videoId]) {
       let anim = gsap.to(span[videoId], {
         onUpdate: () => {
-          
           const progress = Math.ceil(anim.progress() * 100);
 
           if (progress != currentProgress) {
             currentProgress = progress;
 
-           
             gsap.to(videoDivRef.current[videoId], {
               width:
                 window.innerWidth < 760
-                  ? "10vw" 
+                  ? "10vw"
                   : window.innerWidth < 1200
-                  ? "10vw" 
-                  : "4vw", 
+                  ? "10vw"
+                  : "4vw",
             });
 
-   
             gsap.to(span[videoId], {
               width: `${currentProgress}%`,
               backgroundColor: "white",
             });
           }
         },
-
 
         onComplete: () => {
           if (isPlaying) {
@@ -94,7 +88,6 @@ const VideoCarousel = () => {
       if (videoId == 0) {
         anim.restart();
       }
-
 
       const animUpdate = () => {
         anim.progress(
