@@ -10,7 +10,7 @@ export default function Highlights() {
   }, []);
 
   useGSAP(() => {
-    gsap.to(".link", { opacity: 1, y: 0, duration: 1, stagger: .25 });
+    gsap.to(".link", { opacity: 1, y: 0, duration: 1, stagger: 0.25 });
   }, []);
 
   return (

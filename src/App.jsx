@@ -9,5 +9,5 @@ export default function App() {
       <Hero />
       <Highlights />
     </main>
-  )
+  );
 }
